@@ -32,15 +32,15 @@
             <div>
                 <h2 class="text-lg font-bold text-[#1E293B] mb-3">Available Jobs</h2>
                 <div class="flex flex-wrap items-center gap-2">
-                    <button class="px-3 sm:px-4 py-1.5 bg-[#3B82F6] text-white text-sm font-medium rounded shadow-sm">All</button>
-                    <button class="px-3 sm:px-4 py-1.5 bg-white text-gray-600 text-sm font-medium rounded shadow-sm border border-gray-200 hover:bg-gray-50">Interview</button>
-                    <button class="px-3 sm:px-4 py-1.5 bg-white text-gray-600 text-sm font-medium rounded shadow-sm border border-gray-200 hover:bg-gray-50">Rejected</button>
+                    <button class="tab-btn px-3 sm:px-4 py-1.5 bg-[#3B82F6] text-white text-sm font-medium rounded shadow-sm" data-tab="all">All</button>
+                    <button class="tab-btn px-3 sm:px-4 py-1.5 bg-white text-gray-600 text-sm font-medium rounded shadow-sm border border-gray-200 hover:bg-gray-50" data-tab="interview">Interview</button>
+                    <button class="tab-btn px-3 sm:px-4 py-1.5 bg-white text-gray-600 text-sm font-medium rounded shadow-sm border border-gray-200 hover:bg-gray-50" data-tab="rejected">Rejected</button>
                 </div>
             </div>
             <span class="text-sm text-gray-500 font-medium">8 jobs</span>
         </div>
 
-        <div class="space-y-4">
+        <div id="all-tab" class="tab-content space-y-4">
             
             <div class="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 relative group">
                 <button class="absolute top-4 sm:top-6 right-4 sm:right-6 text-gray-400 hover:text-red-500 transition-colors">
@@ -267,6 +267,15 @@
             </div>
 
         </div>
+
+        <div id="interview-tab" class="tab-content space-y-4" style="display: none;">
+            
+        </div>
+
+        <div id="rejected-tab" class="tab-content space-y-4" style="display: none;">
+            
+        </div>
+
     </div>
 
     <script src="./script.js"></script>

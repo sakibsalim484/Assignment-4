@@ -1,16 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let jobCards = document.querySelectorAll('.space-y-4 > div');
-    const tabs = document.querySelectorAll('.flex.items-center.gap-2 button');
+    const tabs = document.querySelectorAll('.tab-btn');
     const totalCount = document.querySelector('.grid.grid-cols-1 .bg-white p.text-2xl.font-bold.text-\\[\\#3B82F6\\]');
     const interviewCount = document.querySelector('.grid.grid-cols-1 .bg-white:nth-child(2) p.text-2xl.font-bold.text-\\[\\#10B981\\]');
     const rejectedCount = document.querySelector('.grid.grid-cols-1 .bg-white:nth-child(3) p.text-2xl.font-bold.text-\\[\\#EF4444\\]');
     const jobsCountSpan = document.querySelector('.flex.flex-col.justify-between span.text-sm.text-gray-500.font-medium');
-    const jobsContainer = document.querySelector('.space-y-4');
+    const allTab = document.getElementById('all-tab');
+    const interviewTab = document.getElementById('interview-tab');
+    const rejectedTab = document.getElementById('rejected-tab');
 
     let currentTab = 'all';
     let counts = { total: 8, interview: 0, rejected: 0 };
 
-    
+    // Initially, all cards are in all-tab with status not-applied
+    let jobCards = Array.from(allTab.querySelectorAll('.bg-white'));
     jobCards.forEach((card, index) => {
         card.setAttribute('data-id', index + 1);
         card.setAttribute('data-status', 'not-applied');
@@ -19,35 +21,43 @@ document.addEventListener('DOMContentLoaded', () => {
     
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
+            const tabName = tab.getAttribute('data-tab');
             
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+            
+            // Show the selected tab
+            document.getElementById(tabName + '-tab').style.display = 'block';
+            
+            // Update active tab button
             tabs.forEach(t => {
                 t.classList.remove('bg-[#3B82F6]', 'text-white');
                 t.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
             });
-          
             tab.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
             tab.classList.add('bg-[#3B82F6]', 'text-white');
-            currentTab = tab.textContent.toLowerCase();
-            filterCards();
+            
+            currentTab = tabName;
             updateJobsCount();
         });
     });
 
     
     jobCards.forEach(card => {
-        const interviewBtn = card.querySelector('div.flex.items-center.gap-3 button:nth-child(1)');
-        const rejectedBtn = card.querySelector('div.flex.items-center.gap-3 button:nth-child(2)');
+        const interviewBtn = card.querySelector('button.border-\\[\\#10B981\\]');
+        const rejectedBtn = card.querySelector('button.border-\\[\\#EF4444\\]');
         const deleteBtn = card.querySelector('button.absolute');
 
         interviewBtn.addEventListener('click', () => {
             const currentStatus = card.getAttribute('data-status');
             if (currentStatus === 'interview') {
                 setStatus(card, 'not-applied');
+                moveCard(card, 'all');
             } else {
                 setStatus(card, 'interview');
+                moveCard(card, 'interview');
             }
             updateCounts();
-            filterCards();
             updateJobsCount();
         });
 
@@ -55,18 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentStatus = card.getAttribute('data-status');
             if (currentStatus === 'rejected') {
                 setStatus(card, 'not-applied');
+                moveCard(card, 'all');
             } else {
                 setStatus(card, 'rejected');
+                moveCard(card, 'rejected');
             }
             updateCounts();
-            filterCards();
             updateJobsCount();
         });
 
         deleteBtn.addEventListener('click', () => {
             card.remove();
             updateCounts();
-            filterCards();
             updateJobsCount();
         });
     });
@@ -74,80 +84,73 @@ document.addEventListener('DOMContentLoaded', () => {
     function setStatus(card, status) {
         card.setAttribute('data-status', status);
         const statusSpan = card.querySelector('span.inline-block');
+        const interviewBtn = card.querySelector('button.border-\\[\\#10B981\\]');
+        const rejectedBtn = card.querySelector('button.border-\\[\\#EF4444\\]');
+        
+        // Reset button styles
+        interviewBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors';
+        rejectedBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors';
+        
         if (status === 'interview') {
             statusSpan.textContent = 'INTERVIEW';
             statusSpan.className = 'inline-block px-2.5 py-1 bg-[#D1FAE5] text-[#10B981] text-xs font-bold tracking-wide rounded mb-4';
+            // Highlight interview button
+            interviewBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 bg-[#10B981] text-white text-xs font-bold rounded uppercase tracking-wider transition-colors';
         } else if (status === 'rejected') {
             statusSpan.textContent = 'REJECTED';
             statusSpan.className = 'inline-block px-2.5 py-1 bg-[#FEE2E2] text-[#EF4444] text-xs font-bold tracking-wide rounded mb-4';
+            // Highlight rejected button
+            rejectedBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 bg-[#EF4444] text-white text-xs font-bold rounded uppercase tracking-wider transition-colors';
         } else {
             statusSpan.textContent = 'NOT APPLIED';
             statusSpan.className = 'inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4';
         }
     }
 
+    function moveCard(card, tab) {
+        card.remove();
+        if (tab === 'all') {
+            allTab.appendChild(card);
+        } else if (tab === 'interview') {
+            interviewTab.appendChild(card);
+        } else if (tab === 'rejected') {
+            rejectedTab.appendChild(card);
+        }
+    }
+
     function updateCounts() {
-        jobCards = document.querySelectorAll('.space-y-4 > div');
-        const statuses = Array.from(jobCards).map(card => card.getAttribute('data-status'));
-        counts.total = statuses.length;
-        counts.interview = statuses.filter(s => s === 'interview').length;
-        counts.rejected = statuses.filter(s => s === 'rejected').length;
+        counts.total = allTab.querySelectorAll('.bg-white').length + interviewTab.querySelectorAll('.bg-white').length + rejectedTab.querySelectorAll('.bg-white').length;
+        counts.interview = interviewTab.querySelectorAll('.bg-white').length;
+        counts.rejected = rejectedTab.querySelectorAll('.bg-white').length;
         totalCount.textContent = counts.total;
         interviewCount.textContent = counts.interview;
         rejectedCount.textContent = counts.rejected;
     }
 
     function filterCards() {
-        jobCards = document.querySelectorAll('.space-y-4 > div');
-        jobCards.forEach(card => {
-            const status = card.getAttribute('data-status');
-            if (currentTab === 'all') {
-                card.style.display = 'block';
-            } else if (currentTab === status) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-       
-        const visibleCards = Array.from(jobCards).filter(card => card.style.display !== 'none');
-        if (visibleCards.length === 0 && currentTab !== 'all') {
-            showNoJobsMessage();
-        } else {
-            removeNoJobsMessage();
-        }
+        // No longer needed
     }
 
     function showNoJobsMessage() {
-        removeNoJobsMessage(); 
-        const message = document.createElement('div');
-        message.className = 'bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center';
-        message.innerHTML = `
-            <div class="mb-4">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-            </div>
-            <h3 class="text-lg font-medium text-gray-900 mb-2">No jobs available</h3>
-            <p class="text-sm text-gray-500">There are no jobs in this category yet.</p>
-        `;
-        message.id = 'no-jobs-message';
-        jobsContainer.appendChild(message);
+        // No longer needed
     }
 
     function removeNoJobsMessage() {
-        const message = document.getElementById('no-jobs-message');
-        if (message) message.remove();
+        // No longer needed
     }
 
     function updateJobsCount() {
-        jobCards = document.querySelectorAll('.space-y-4 > div');
-        const visibleCards = Array.from(jobCards).filter(card => card.style.display !== 'none');
-        jobsCountSpan.textContent = `${visibleCards.length} jobs`;
+        let visibleCount = 0;
+        if (currentTab === 'all') {
+            visibleCount = allTab.querySelectorAll('.bg-white').length;
+        } else if (currentTab === 'interview') {
+            visibleCount = interviewTab.querySelectorAll('.bg-white').length;
+        } else if (currentTab === 'rejected') {
+            visibleCount = rejectedTab.querySelectorAll('.bg-white').length;
+        }
+        jobsCountSpan.textContent = `${visibleCount} jobs`;
     }
 
-   
     updateCounts();
-    filterCards();
     updateJobsCount();
 });
