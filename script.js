@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     jobCards.forEach(card => {
-        const buttonsDiv = card.querySelector('div.flex');
+        const buttonsDiv = card.querySelectorAll('div.flex')[1]; // Second div.flex contains buttons
         const interviewBtn = buttonsDiv.querySelector('button');
         const rejectedBtn = buttonsDiv.querySelectorAll('button')[1];
         const deleteBtn = card.querySelector('button.absolute');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setStatus(card, status) {
         card.setAttribute('data-status', status);
         const statusSpan = card.querySelector('span.inline-block');
-        const buttonsDiv = card.querySelector('div.flex');
+        const buttonsDiv = card.querySelectorAll('div.flex')[1];
         const interviewBtn = buttonsDiv.querySelector('button');
         const rejectedBtn = buttonsDiv.querySelectorAll('button')[1];
         
@@ -134,12 +134,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // No longer needed
     }
 
-    function showNoJobsMessage() {
-        // No longer needed
+    function showNoJobsMessage(container) {
+        removeNoJobsMessage(container);
+        const message = document.createElement('div');
+        message.className = 'bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center';
+        message.innerHTML = `
+            <div class="mb-4">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No jobs available</h3>
+            <p class="text-sm text-gray-500">There are no jobs in this category yet.</p>
+        `;
+        message.id = 'no-jobs-message';
+        container.appendChild(message);
     }
 
-    function removeNoJobsMessage() {
-        // No longer needed
+    function removeNoJobsMessage(container) {
+        const message = container.querySelector('#no-jobs-message');
+        if (message) message.remove();
     }
 
     function updateJobsCount() {
