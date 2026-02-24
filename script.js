@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     let jobCards = document.querySelectorAll('.space-y-4 > div');
     const tabs = document.querySelectorAll('.flex.items-center.gap-2 button');
-    const totalCount = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3 .bg-white p.text-2xl.font-bold.text-\\[\\#3B82F6\\]');
-    const interviewCount = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3 .bg-white:nth-child(2) p.text-2xl.font-bold.text-\\[\\#10B981\\]');
-    const rejectedCount = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3 .bg-white:nth-child(3) p.text-2xl.font-bold.text-\\[\\#EF4444\\]');
-    const jobsCountSpan = document.querySelector('.flex.flex-col.md\\:flex-row.justify-between span.text-sm.text-gray-500.font-medium');
+    const totalCount = document.querySelector('.grid.grid-cols-1 .bg-white p.text-2xl.font-bold.text-\\[\\#3B82F6\\]');
+    const interviewCount = document.querySelector('.grid.grid-cols-1 .bg-white:nth-child(2) p.text-2xl.font-bold.text-\\[\\#10B981\\]');
+    const rejectedCount = document.querySelector('.grid.grid-cols-1 .bg-white:nth-child(3) p.text-2xl.font-bold.text-\\[\\#EF4444\\]');
+    const jobsCountSpan = document.querySelector('.flex.flex-col.justify-between span.text-sm.text-gray-500.font-medium');
     const jobsContainer = document.querySelector('.space-y-4');
 
     let currentTab = 'all';
