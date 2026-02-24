@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTab = 'all';
     let counts = { total: 8, interview: 0, rejected: 0 };
 
-    // Initially, all cards are in all-tab with status not-applied
+ 
     let jobCards = Array.from(allTab.querySelectorAll('.bg-white'));
     jobCards.forEach((card, index) => {
         card.setAttribute('data-id', index + 1);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     jobCards.forEach(card => {
-        const buttonsDiv = card.querySelectorAll('div.flex')[1]; // Second div.flex contains buttons
+        const buttonsDiv = card.querySelectorAll('div.flex')[1];
         const interviewBtn = buttonsDiv.querySelector('button');
         const rejectedBtn = buttonsDiv.querySelectorAll('button')[1];
         const deleteBtn = card.querySelector('button.absolute');
@@ -80,19 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const interviewBtn = buttonsDiv.querySelector('button');
         const rejectedBtn = buttonsDiv.querySelectorAll('button')[1];
         
-        // Reset button styles
+       
         interviewBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors';
         rejectedBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors';
         
         if (status === 'interview') {
             statusSpan.textContent = 'INTERVIEW';
             statusSpan.className = 'inline-block px-2.5 py-1 bg-[#D1FAE5] text-[#10B981] text-xs font-bold tracking-wide rounded mb-4';
-            // Highlight interview button
+         
             interviewBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 bg-[#10B981] text-white text-xs font-bold rounded uppercase tracking-wider transition-colors';
         } else if (status === 'rejected') {
             statusSpan.textContent = 'REJECTED';
             statusSpan.className = 'inline-block px-2.5 py-1 bg-[#FEE2E2] text-[#EF4444] text-xs font-bold tracking-wide rounded mb-4';
-            // Highlight rejected button
+         
             rejectedBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 bg-[#EF4444] text-white text-xs font-bold rounded uppercase tracking-wider transition-colors';
         } else {
             statusSpan.textContent = 'NOT APPLIED';
@@ -101,13 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function switchTab(tabName) {
-        // Hide all tab contents
+       
         document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
         
-        // Show the selected tab
+      
         document.getElementById(tabName + '-tab').style.display = 'block';
         
-        // Update active tab button
+       
         tabs.forEach(t => {
             t.classList.remove('bg-[#3B82F6]', 'text-white');
             t.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterCards() {
-        // No longer needed
+       
     }
 
     function showNoJobsMessage(container) {
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         jobsCountSpan.textContent = `${visibleCount} jobs`;
         
-        // Show no jobs message if empty
+       
         if (visibleCount === 0) {
             showNoJobsMessage(tabContainer);
         } else {
