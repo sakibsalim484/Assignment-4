@@ -22,30 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const tabName = tab.getAttribute('data-tab');
-            
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
-            
-            // Show the selected tab
-            document.getElementById(tabName + '-tab').style.display = 'block';
-            
-            // Update active tab button
-            tabs.forEach(t => {
-                t.classList.remove('bg-[#3B82F6]', 'text-white');
-                t.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
-            });
-            tab.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
-            tab.classList.add('bg-[#3B82F6]', 'text-white');
-            
-            currentTab = tabName;
+            switchTab(tabName);
             updateJobsCount();
         });
     });
 
     
     jobCards.forEach(card => {
-        const interviewBtn = card.querySelector('button.border-\\[\\#10B981\\]');
-        const rejectedBtn = card.querySelector('button.border-\\[\\#EF4444\\]');
+        const buttonsDiv = card.querySelector('div.flex');
+        const interviewBtn = buttonsDiv.querySelector('button');
+        const rejectedBtn = buttonsDiv.querySelectorAll('button')[1];
         const deleteBtn = card.querySelector('button.absolute');
 
         interviewBtn.addEventListener('click', () => {
@@ -53,9 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentStatus === 'interview') {
                 setStatus(card, 'not-applied');
                 moveCard(card, 'all');
+                switchTab('all');
             } else {
                 setStatus(card, 'interview');
                 moveCard(card, 'interview');
+                switchTab('interview');
             }
             updateCounts();
             updateJobsCount();
@@ -66,9 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentStatus === 'rejected') {
                 setStatus(card, 'not-applied');
                 moveCard(card, 'all');
+                switchTab('all');
             } else {
                 setStatus(card, 'rejected');
                 moveCard(card, 'rejected');
+                switchTab('rejected');
             }
             updateCounts();
             updateJobsCount();
@@ -86,8 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function setStatus(card, status) {
         card.setAttribute('data-status', status);
         const statusSpan = card.querySelector('span.inline-block');
-        const interviewBtn = card.querySelector('button.border-\\[\\#10B981\\]');
-        const rejectedBtn = card.querySelector('button.border-\\[\\#EF4444\\]');
+        const buttonsDiv = card.querySelector('div.flex');
+        const interviewBtn = buttonsDiv.querySelector('button');
+        const rejectedBtn = buttonsDiv.querySelectorAll('button')[1];
         
         // Reset button styles
         interviewBtn.className = 'w-full sm:w-auto px-3 sm:px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors';
@@ -109,15 +100,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function moveCard(card, tab) {
-        card.remove();
-        if (tab === 'all') {
-            allTab.appendChild(card);
-        } else if (tab === 'interview') {
-            interviewTab.appendChild(card);
-        } else if (tab === 'rejected') {
-            rejectedTab.appendChild(card);
+    function switchTab(tabName) {
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+        
+        // Show the selected tab
+        document.getElementById(tabName + '-tab').style.display = 'block';
+        
+        // Update active tab button
+        tabs.forEach(t => {
+            t.classList.remove('bg-[#3B82F6]', 'text-white');
+            t.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
+        });
+        const activeTab = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+        if (activeTab) {
+            activeTab.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200', 'hover:bg-gray-50');
+            activeTab.classList.add('bg-[#3B82F6]', 'text-white');
         }
+        
+        currentTab = tabName;
     }
 
     function updateCounts() {
