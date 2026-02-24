@@ -1,3 +1,40 @@
+# Job Application Tracker
+
+A web application for tracking job applications with status management.
+
+## Features
+
+- View all job applications
+- Categorize jobs into Interview and Rejected statuses
+- Dashboard showing total, interview, and rejected counts
+- Tabbed interface for easy navigation
+- Delete jobs from the tracker
+- Responsive design
+
+## Technologies Used
+
+- HTML
+- CSS (Tailwind CSS)
+- JavaScript
+
+## How to Use
+
+1. Open `index.html` in a web browser
+2. Click on Interview or Rejected buttons to categorize jobs
+3. Use tabs to view jobs by status
+4. Click the delete icon to remove jobs
+
+## Functionality
+
+- Clicking Interview button moves the job to Interview tab and updates counts
+- Clicking Rejected button moves the job to Rejected tab and updates counts
+- Toggle between statuses by clicking the respective buttons
+- Delete button removes the job and deducts from counts
+
+---
+
+### Assignment Questions
+
 ### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 Ans:getElementById নির্দিষ্ট ID দিয়ে ১টি, getElementsByClassName নির্দিষ্ট Class দিয়ে সব, querySelector যেকোনো CSS সিলেক্টর দিয়ে প্রথমটি এবং querySelectorAll ওই সিলেক্টর দিয়ে সব এলিমেন্টকে একসাথে সিলেক্ট করে।
 
