@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job tracker application</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+</head>
+<body class="bg-[#F8FAFC] min-h-screen p-6 md:p-10">
+
+    <div class="max-w-5xl mx-auto">
+        
+        <h1 class="text-2xl font-bold text-[#1E293B] mb-8">Job Application Tracker</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <p class="text-sm font-medium text-gray-500 mb-2">Total</p>
+                <p class="text-2xl font-bold text-[#3B82F6]">8</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <p class="text-sm font-medium text-gray-500 mb-2">Interview</p>
+                <p class="text-2xl font-bold text-[#10B981]">0</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <p class="text-sm font-medium text-gray-500 mb-2">Rejected</p>
+                <p class="text-2xl font-bold text-[#EF4444]">0</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <div>
+                <h2 class="text-lg font-bold text-[#1E293B] mb-3">Available Jobs</h2>
+                <div class="flex items-center gap-2">
+                    <button class="px-4 py-1.5 bg-[#3B82F6] text-white text-sm font-medium rounded shadow-sm">All</button>
+                    <button class="px-4 py-1.5 bg-white text-gray-600 text-sm font-medium rounded shadow-sm border border-gray-200 hover:bg-gray-50">Interview</button>
+                    <button class="px-4 py-1.5 bg-white text-gray-600 text-sm font-medium rounded shadow-sm border border-gray-200 hover:bg-gray-50">Rejected</button>
+                </div>
+            </div>
+            <span class="text-sm text-gray-500 font-medium">8 jobs</span>
+        </div>
+
+        <div class="space-y-4">
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">Mobile First Corp</h3>
+                <p class="text-sm text-gray-500 mb-2">React Native Developer</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>Remote</span>
+                    <span>•</span>
+                    <span>Full-time</span>
+                    <span>•</span>
+                    <span>$120,000 - $175,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">WebFlow Agency</h3>
+                <p class="text-sm text-gray-500 mb-2">Web Designer & Developer</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>Los Angeles, CA</span>
+                    <span>•</span>
+                    <span>Part-time</span>
+                    <span>•</span>
+                    <span>$80,000 - $120,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">Tech Innovators</h3>
+                <p class="text-sm text-gray-500 mb-2">Frontend Developer</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>New York, NY</span>
+                    <span>•</span>
+                    <span>Full-time</span>
+                    <span>•</span>
+                    <span>$100,000 - $150,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Develop user interfaces for cutting-edge web applications. Collaborate with design and backend teams to deliver exceptional user experiences.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">Data Solutions Inc</h3>
+                <p class="text-sm text-gray-500 mb-2">Data Scientist</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>Remote</span>
+                    <span>•</span>
+                    <span>Full-time</span>
+                    <span>•</span>
+                    <span>$130,000 - $180,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Analyze large datasets to extract insights and build predictive models. Work with machine learning algorithms and big data technologies.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">StartupXYZ</h3>
+                <p class="text-sm text-gray-500 mb-2">Backend Engineer</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>San Francisco, CA</span>
+                    <span>•</span>
+                    <span>Full-time</span>
+                    <span>•</span>
+                    <span>$110,000 - $160,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Build scalable APIs and backend systems for a fast-growing startup. Experience with Node.js, Python, and cloud services required.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">Creative Studio</h3>
+                <p class="text-sm text-gray-500 mb-2">UI/UX Designer</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>Remote</span>
+                    <span>•</span>
+                    <span>Contract</span>
+                    <span>•</span>
+                    <span>$70,000 - $100,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Design intuitive user experiences for web and mobile applications. Proficiency in Figma, Adobe XD, and user research methodologies.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">Global Corp</h3>
+                <p class="text-sm text-gray-500 mb-2">DevOps Engineer</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>Chicago, IL</span>
+                    <span>•</span>
+                    <span>Full-time</span>
+                    <span>•</span>
+                    <span>$120,000 - $170,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Manage cloud infrastructure and CI/CD pipelines. Experience with AWS, Docker, and Kubernetes is essential for this role.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative group">
+                <button class="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
+                    <img src="images/jobs.png" class="h-5 w-5" alt="Job">
+                </button>
+
+                <h3 class="text-lg font-bold text-[#1E293B]">FinTech Ltd</h3>
+                <p class="text-sm text-gray-500 mb-2">Product Manager</p>
+                
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <span>Boston, MA</span>
+                    <span>•</span>
+                    <span>Full-time</span>
+                    <span>•</span>
+                    <span>$140,000 - $200,000</span>
+                </div>
+
+                <span class="inline-block px-2.5 py-1 bg-[#EFF6FF] text-[#3B82F6] text-xs font-bold tracking-wide rounded mb-4">
+                    NOT APPLIED
+                </span>
+
+                <p class="text-sm text-gray-600 mb-6">Lead product development for financial technology solutions. Define product strategy and work closely with engineering and design teams.</p>
+
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-1.5 border border-[#10B981] text-[#10B981] text-xs font-bold rounded uppercase tracking-wider hover:bg-emerald-50 transition-colors">Interview</button>
+                    <button class="px-4 py-1.5 border border-[#EF4444] text-[#EF4444] text-xs font-bold rounded uppercase tracking-wider hover:bg-red-50 transition-colors">Rejected</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
