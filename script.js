@@ -75,9 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         deleteBtn.addEventListener('click', () => {
-            card.remove();
-            updateCounts();
-            updateJobsCount();
+            if (confirm('Are you sure you want to delete this job?')) {
+                card.remove();
+                updateCounts();
+                updateJobsCount();
+            }
         });
     });
 
